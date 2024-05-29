@@ -1,39 +1,53 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Cesium 3d Model</title>
-  <!-- Include the CesiumJS JavaScript and CSS files -->
-  <script src="https://cesium.com/downloads/cesiumjs/releases/1.117/Build/Cesium/Cesium.js"></script>
-  <link href="cesium.css" rel="stylesheet">
+    <!-- Include the CesiumJS JavaScript and CSS files -->
+    <script src="https://cesium.com/downloads/cesiumjs/releases/1.117/Build/Cesium/Cesium.js"></script>
+    <link href="cesium.css" rel="stylesheet">
 </head>
+
 <body>
-  <div id="cesiumContainer"></div>
-  <script type="module">
-    // Your access token can be found at: https://ion.cesium.com/tokens.
-    // Replace `your_access_token` with your Cesium ion access token.
+    <div id="cesiumContainer"></div>
+    <script type="module">
+        // Your access token can be found at: https://ion.cesium.com/tokens.
+        // Replace `your_access_token` with your Cesium ion access token.
 
-    Cesium.Ion.defaultAccessToken = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJqdGkiOiJiY2EzMTk3ZS0xYzAzLTQ4ZGEtOWFmNi1hNmIxZmU3M2I5ZDkiLCJpZCI6MjE4NjYyLCJpYXQiOjE3MTY5ODAyMjN9.f45bmhrwkGvBCUSkjkE4-BliVbEq48Sm1T6IFk-u48k';
+        Cesium.Ion.defaultAccessToken = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJqdGkiOiJiY2EzMTk3ZS0xYzAzLTQ4ZGEtOWFmNi1hNmIxZmU3M2I5ZDkiLCJpZCI6MjE4NjYyLCJpYXQiOjE3MTY5ODAyMjN9.f45bmhrwkGvBCUSkjkE4-BliVbEq48Sm1T6IFk-u48k';
 
-    // Initialize the Cesium Viewer in the HTML element with the `cesiumContainer` ID.
-    const viewer = new Cesium.Viewer('cesiumContainer', {
-      terrain: Cesium.Terrain.fromWorldTerrain(),
-    });    
+        // Initialize the Cesium Viewer in the HTML element with the `cesiumContainer` ID.
+        const viewer = new Cesium.Viewer('cesiumContainer', {
+            terrain: Cesium.Terrain.fromWorldTerrain(),
+        });
+        const entity = viewer.entities.add({
+            position: Cesium.Cartesian3.fromDegrees(
+                -75.59777,
+                40.03883,
+                300000.0
+            ),
+            billboard: {
+                image: "./marker.png",
+            },
+        });
 
-    // // Fly the camera to San Francisco at the given longitude, latitude, and height.
-    // viewer.camera.flyTo({
-    //   destination: Cesium.Cartesian3.fromDegrees(-122.4175, 37.655, 400),
-    //   orientation: {
-    //     heading: Cesium.Math.toRadians(0.0),
-    //     pitch: Cesium.Math.toRadians(-15.0),
-    //   }
-    // });
 
-    // // Add Cesium OSM Buildings, a global 3D buildings layer.
-    // const buildingTileset = await Cesium.createOsmBuildingsAsync();
-    // viewer.scene.primitives.add(buildingTileset);   
-  </script>
- </div>
+        // // Fly the camera to San Francisco at the given longitude, latitude, and height.
+        // viewer.camera.flyTo({
+        //   destination: Cesium.Cartesian3.fromDegrees(-122.4175, 37.655, 400),
+        //   orientation: {
+        //     heading: Cesium.Math.toRadians(0.0),
+        //     pitch: Cesium.Math.toRadians(-15.0),
+        //   }
+        // });
+
+        // // Add Cesium OSM Buildings, a global 3D buildings layer.
+        // const buildingTileset = await Cesium.createOsmBuildingsAsync();
+        // viewer.scene.primitives.add(buildingTileset);   
+    </script>
+    </div>
 </body>
+
 </html>
