@@ -22,6 +22,7 @@
         const viewer = new Cesium.Viewer('cesiumContainer', {
             terrain: Cesium.Terrain.fromWorldTerrain(),
         });
+        viewer.scene.globe.showGroundAtmosphere = false;
         const entity = viewer.entities.add({
             position: Cesium.Cartesian3.fromDegrees(
                 -75.59777,
