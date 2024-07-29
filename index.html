@@ -15,29 +15,30 @@
     <script type="module">
         // Your access token can be found at: https://ion.cesium.com/tokens.
         // Replace `your_access_token` with your Cesium ion access token.
-        try {
-            Cesium.Ion.defaultAccessToken = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJqdGkiOiJiY2EzMTk3ZS0xYzAzLTQ4ZGEtOWFmNi1hNmIxZmU3M2I5ZDkiLCJpZCI6MjE4NjYyLCJpYXQiOjE3MTY5ODAyMjN9.f45bmhrwkGvBCUSkjkE4-BliVbEq48Sm1T6IFk-u48k';
 
-            // Initialize the Cesium Viewer in the HTML element with the `cesiumContainer` ID.
-            const viewer = new Cesium.Viewer('cesiumContainer', {
-                terrain: Cesium.Terrain.fromWorldTerrain(),
-            });
+        Cesium.Ion.defaultAccessToken = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJqdGkiOiJiY2EzMTk3ZS0xYzAzLTQ4ZGEtOWFmNi1hNmIxZmU3M2I5ZDkiLCJpZCI6MjE4NjYyLCJpYXQiOjE3MTY5ODAyMjN9.f45bmhrwkGvBCUSkjkE4-BliVbEq48Sm1T6IFk-u48k';
 
+        // Initialize the Cesium Viewer in the HTML element with the `cesiumContainer` ID.
+        const viewer = new Cesium.Viewer('cesiumContainer', {
+            terrain: Cesium.Terrain.fromWorldTerrain(),
+        });
+        // viewer.scene.globe.showGroundAtmosphere = false;
 
-            const entity = viewer.entities.add({
-                position: Cesium.Cartesian3.fromDegrees(
-                    -75.59777,
-                    40.03883,
-                    300000.0
-                ),
-                billboard: {
-                    image: "./marker.png",
-                },
-            });
-        }
-        catch {
-            viewer.scene.globe.showGroundAtmosphere = false;
-        }
+        const entity = viewer.entities.add({
+            position: Cesium.Cartesian3.fromDegrees(
+                -75.59777,
+                40.03883,
+                300000.0
+            ),
+            billboard: {
+                image: "./marker.png",
+            },
+        });
+
+        // Access the atmosphere settings in the scene
+        const atmosphere = viewer.scene.skyAtmosphere;
+
+        console.log(atmosphere)
 
 
         // // Fly the camera to San Francisco at the given longitude, latitude, and height.
