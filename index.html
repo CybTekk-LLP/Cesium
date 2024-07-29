@@ -37,9 +37,10 @@
 
         // Access the atmosphere settings in the scene
         const atmosphere = viewer.scene.skyAtmosphere;
+        const ground = viewer.scene.globe;
 
         console.log(atmosphere)
-
+        console.warn(ground)
 
         // // Fly the camera to San Francisco at the given longitude, latitude, and height.
         // viewer.camera.flyTo({
